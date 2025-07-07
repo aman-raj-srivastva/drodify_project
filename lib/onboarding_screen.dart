@@ -18,18 +18,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       image: 'assests/1.png',
       overlays: [
         Positioned(
-          top: 26,
-          left: 16,
+          top: 66,
+          left: 44,
           child: Transform.rotate(
-            angle: -0.12,
+            angle: -0.16,
             child: _tagOverlay(Icons.place, 'Bali, Indonesia'),
           ),
         ),
         Positioned(
           bottom: 60,
-          right: 16,
+          right: 36,
           child: Transform.rotate(
-            angle: 0.12,
+            angle: 0.16,
             child: _tagOverlay(Icons.nights_stay, '3 Nights'),
           ),
         ),
@@ -44,14 +44,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       image: 'assests/2.png',
       overlays: [
         Positioned(
-          top: 32,
-          right: 12,
-          child: _bubbleOverlay('Peaceful and relaxing! 🪴'),
+          top: 72,
+          right: 22,
+          child: _bubbleOverlay1('Peaceful and relaxing! 🪴'),
         ),
         Positioned(
-          left: 12,
-          bottom: 200,
-          child: _bubbleOverlay('Super comfy stay! 😍'),
+          left: 22,
+          bottom: 150,
+          child: _bubbleOverlay2('Super comfy stay! 😍'),
         ),
       ],
       title: 'Your Comfort\nis Our Priority',
@@ -64,21 +64,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       image: 'assests/3.png',
       overlays: [
         Positioned(
-          top: 66,
-          left: 20,
+          top: 86,
+          left: 60,
           child: Transform.rotate(
             angle: -0.12,
             child: _svgLogo1('assests/visa.svg'),
           ),
         ),
         Positioned(
-          top: 0,
+          top: 30,
           left: 200,
           child: _svgLogo2('assests/mastercard.svg'),
         ),
         Positioned(
-          top: 66,
-          right: 20,
+          top: 76,
+          right: 60,
           child: Transform.rotate(
             angle: 0.12,
             child: _svgLogo2('assests/paypal.svg'),
@@ -100,9 +100,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(4),
-        boxShadow: [
-          BoxShadow(color: const Color.fromARGB(72, 12, 12, 12), blurRadius: 6),
-        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -118,7 +115,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  static Widget _bubbleOverlay(String text) {
+  static Widget _bubbleOverlay1(String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(6),
+          topRight: Radius.circular(6),
+          bottomLeft: Radius.circular(0),
+          bottomRight: Radius.circular(6),
+        ),
+        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 6)],
+      ),
+      child: Text(text, style: const TextStyle(fontSize: 13)),
+    );
+  }
+
+  static Widget _bubbleOverlay2(String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -126,7 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(6),
           topRight: Radius.circular(0),
-          bottomLeft: Radius.circular(0),
+          bottomLeft: Radius.circular(6),
           bottomRight: Radius.circular(6),
         ),
         boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 6)],
@@ -188,7 +202,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   static Widget _paymentCardOverlay() {
     return Center(
       child: Container(
-        width: 280,
+        width: 220,
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -219,27 +233,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 children: const [
                   Text(
                     'Payment Successful! ✅',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 11),
                   ),
                   SizedBox(height: 2),
                   Text(
                     'Enjoy your stay! 🏡✨',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 10,
                       color: Color.fromARGB(236, 0, 0, 0),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 7),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
                   'now',
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 9,
                     color: Color.fromARGB(236, 0, 0, 0),
                   ),
                 ),
@@ -288,7 +302,93 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       const SizedBox(height: 24),
                       Stack(
+                        alignment: Alignment.center,
                         children: [
+                          // Left background image (rotated, grayscale)
+                          Positioned(
+                            left: -100,
+                            top: 40,
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: Transform.rotate(
+                                angle: -0.18,
+                                child: ColorFiltered(
+                                  colorFilter:
+                                      const ColorFilter.matrix(<double>[
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        1,
+                                        0,
+                                      ]),
+                                  child: Image.asset(
+                                    _pages[(i + 2) % _pages.length].image,
+                                    height: 220,
+                                    width: 240,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Right background image (rotated, grayscale)
+                          Positioned(
+                            right: -100,
+                            top: 40,
+                            child: Opacity(
+                              opacity: 0.5,
+                              child: Transform.rotate(
+                                angle: 0.18,
+                                child: ColorFiltered(
+                                  colorFilter:
+                                      const ColorFilter.matrix(<double>[
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0.2126,
+                                        0.7152,
+                                        0.0722,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        1,
+                                        0,
+                                      ]),
+                                  child: Image.asset(
+                                    _pages[(i + 1) % _pages.length].image,
+                                    height: 220,
+                                    width: 240,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Main hero image (center, not rotated, not filtered)
                           Center(
                             child: Card(
                               color: Colors.white,
@@ -296,9 +396,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 8,
+                              margin: const EdgeInsets.only(
+                                top: 48,
+                                left: 8,
+                                right: 8,
+                                bottom: 8,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -316,8 +418,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     borderRadius: BorderRadius.circular(4),
                                     child: Image.asset(
                                       page.image,
-                                      height: 300,
-                                      width: 320,
+                                      height: 220,
+                                      width: 240,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -328,7 +430,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ...page.overlays,
                         ],
                       ),
-                      const SizedBox(height: 26),
+                      const SizedBox(height: 36),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4),
                         child: Text(
