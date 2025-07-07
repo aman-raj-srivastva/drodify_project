@@ -1,6 +1,7 @@
 // Make sure to add flutter_svg: ^1.1.6 (or latest) to your pubspec.yaml dependencies!
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project/booking_history_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -277,11 +278,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _onSkip() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const BookingHistoryScreen()),
+    );
     // TODO: Navigate to login or home
   }
 
   void _onSignUp() {
-    // TODO: Navigate to sign up
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const BookingHistoryScreen()),
+    );
   }
 
   @override
